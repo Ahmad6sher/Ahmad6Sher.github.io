@@ -6,14 +6,14 @@
 
 
 ### System Update
-`pacman -Syu`
-<br>
+`pacman -Syu`<br>
+
 
 
 ### Partitioning and Mounting
 ### Use fdisk or cfdisk to create and format partitions:
-### Example Commands:
-<br>
+### Example Commands: <br>
+
 
 
 ### View available disks
