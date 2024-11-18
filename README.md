@@ -2,117 +2,138 @@
 
 ```bash
 ### Prerequisites
-### Ensure you have a stable internet connection and the latest Arch Linux ISO installed on your system.  <br>
-
+### Ensure you have a stable internet connection and the latest Arch Linux ISO installed on your system.
+##
 
 ### System Update
-`pacman -Syu`<br>
-
+`pacman -Syu`
+##
 
 
 ### Partitioning and Mounting
 ### Use fdisk or cfdisk to create and format partitions:
-### Example Commands: <br>
-
+### Example Commands:
+##
 
 
 ### View available disks
-`fdisk -l`  <br>
+`fdisk -l`
+##
 
 
 ### Partition a disk (replace /dev/sdX with your disk name)
-`fdisk /dev/sdX`  <br>
+`fdisk /dev/sdX`
+##
 
 
 ### Format the partitions
 `mkfs.ext4 /dev/sdX1`
-`mkfs.fat -F 32 /dev/sdX2`  <br>
+`mkfs.fat -F 32 /dev/sdX2`
+##
 
 
 ### Mount the filesystem
 `mount /dev/sdX1 /mnt`
 `mkdir /mnt/boot`
-`mount /dev/sdX2 /mnt/boot`  <br>
+`mount /dev/sdX2 /mnt/boot`
+##
 
 
 ### Install Essential Packages
-`pacstrap /mnt base linux linux-firmware`  <br>
+`pacstrap /mnt base linux linux-firmware`
+##
 
 
 ### System Configuration
 ### Generate fstab:
-`genfstab -U /mnt >> /mnt/etc/fstab`  <br>
+`genfstab -U /mnt >> /mnt/etc/fstab`
+##
 
 
 ### Chroot into Installed System
-`arch-chroot /mnt`  <br>
+`arch-chroot /mnt`
+##
 
 
 ### Set Time Zone
 `ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
-`hwclock --systohc`  <br>
+`hwclock --systohc`
+##
 
 
 ### Locale Configuration
 ### Uncomment your locale in /etc/locale.gen (e.g., en_US.UTF-8 UTF-8)
 `nano /etc/locale.gen`
 `locale-gen`
-`echo "LANG=en_US.UTF-8" > /etc/locale.conf`  <br>
+`echo "LANG=en_US.UTF-8" > /etc/locale.conf`
+##
 
 
 ### Set Hostname
-`echo "myhostname" > /etc/hostname`  <br>
+`echo "myhostname" > /etc/hostname`
+##
 
 
 ### Network Configuration
 `pacman -S networkmanager`
-`systemctl enable NetworkManager`  <br>
+`systemctl enable NetworkManager`
+##
 
 
 # Setting Up Sugar Desktop Environment (DE)
 ### Install Sugar desktop environment and its packages
-`pacman -S sugar sugar-fructose sugar-runner`  <br>
+`pacman -S sugar sugar-fructose sugar-runner`
+##
 
 
 ### Start Sugar Manually (Optional)
 ### To start Sugar manually, create an .xinitrc file:
 `echo "exec sugar" > ~/.xinitrc`
-`startx`  <br>
+`startx`
+##
 
 
 # Install Bootloader
 ### Install GRUB bootloader
-`pacman -S grub efibootmgr`  <br>
+`pacman -S grub efibootmgr`
+##
 
 
 ### Install GRUB to the EFI directory (adjust /dev/sdX):
 `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB`
-`grub-mkconfig -o /boot/grub/grub.cfg`  <br>
+`grub-mkconfig -o /boot/grub/grub.cfg`
+##
 
 
 ### Finalize Installation
 ### Exit chroot:
-`exit`  <br>
+`exit`
+##
 
 
 ### Unmount Partitions
-`umount -R /mnt`  <br>
+`umount -R /mnt`
+##
 
 
 ### Reboot System
-`reboot`  <br>
+`reboot`
+##
 
 
 # Troubleshooting
 ### Mirrorlist Errors:
 ### If no mirrors are found, update the mirror list:
-`reflector --country 'YourCountry' --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`  <br>
+`reflector --country 'YourCountry' --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`
+##
 
 
-### Replace 'YourCountry' with your actual country name for optimal speed.  <br>
+### Replace 'YourCountry' with your actual country name for optimal speed.
+##
 
 
 ### X Server Issues:
 ### If startx fails, ensure the X server is installed:
-`pacman -S xorg-server xorg-xinit`  <br>
+`pacman -S xorg-server xorg-xinit`
+##
 
