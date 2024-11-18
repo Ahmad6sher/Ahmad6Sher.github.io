@@ -5,14 +5,14 @@
 ## Ensure you have a stable internet connection and the latest Arch Linux ISO installed on your system.
 
 ## System Update
-pacman -Syu
+`pacman -Syu`
 
 ### Partitioning and Mounting
 ### Use fdisk or cfdisk to create and format partitions:
 ### Example Commands:
 
 ### View available disks
-'fdisk -l'
+fdisk -l
 
 ## Partition a disk (replace /dev/sdX with your disk name)
 fdisk /dev/sdX
