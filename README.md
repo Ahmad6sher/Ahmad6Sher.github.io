@@ -5,36 +5,36 @@
 ## Ensure you have a stable internet connection and the latest Arch Linux ISO installed on your system.
 
 ## System Update
-==pacman -Syu==
+pacman -Syu
 
 ### Partitioning and Mounting
 ### Use fdisk or cfdisk to create and format partitions:
 ### Example Commands:
 
 ### View available disks
-==fdisk -l==
+'fdisk -l'
 
 ## Partition a disk (replace /dev/sdX with your disk name)
-==fdisk /dev/sdX==
+fdisk /dev/sdX
 
 ## Format the partitions
-==mkfs.ext4 /dev/sdX1==
-==mkfs.fat -F 32 /dev/sdX2==
+mkfs.ext4 /dev/sdX1
+mkfs.fat -F 32 /dev/sdX2
 
 ## Mount the filesystem
-==mount /dev/sdX1 /mnt==
-==mkdir /mnt/boot==
-==mount /dev/sdX2 /mnt/boot==
+mount /dev/sdX1 /mnt
+mkdir /mnt/boot
+mount /dev/sdX2 /mnt/boot
 
 ## Install Essential Packages
-==pacstrap /mnt base linux linux-firmware==
+pacstrap /mnt base linux linux-firmware
 
 ## System Configuration
 ## Generate fstab:
-==genfstab -U /mnt >> /mnt/etc/fstab==
+genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Chroot into Installed System
-==arch-chroot /mnt==
+arch-chroot /mnt
 
 ## Set Time Zone
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
